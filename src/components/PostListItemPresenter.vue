@@ -31,13 +31,14 @@ export default {
   methods: {
     buildItem() {
       return {
+        // 表示用のプロパティの追加とか
         ...this.$props
       };
     },
 
     countUp() {
+      // API のリクエストとか
       this.item.likeCount++;
-      // some request
     }
   },
 
