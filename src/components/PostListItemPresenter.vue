@@ -11,29 +11,33 @@ const createRenderless = (h, vnode) => {
 
 export default {
   props: {
-    items: {
-      type: Array,
+    title: {
+      type: String,
+      required: true
+    },
+
+    likeCount: {
+      type: Number,
       required: true
     }
   },
 
   data() {
     return {
-      displayItems: this.items.map(this.buildItem)
+      item: this.buildItem()
     };
   },
 
   methods: {
-    buildItem(item) {
+    buildItem() {
       return {
-        ...item
+        ...this.$props
       };
     },
 
-    countUp(index) {
-      const item = this.displayItems[index];
-      item.likeCount++;
-      this.$set(this.displayItems, index, this.buildItem(item));
+    countUp() {
+      this.item.likeCount++;
+      // some request
     }
   },
 
@@ -42,7 +46,7 @@ export default {
     if (typeof slot !== "function") {
       return createRenderless(h, this.$slots.default);
     }
-    const nodes = slot({ items: this.displayItems, handleClick: this.countUp });
+    const nodes = slot({ ...this.item, handleClick: this.countUp });
     return createRenderless(h, nodes);
   }
 };

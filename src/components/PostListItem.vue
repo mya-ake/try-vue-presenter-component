@@ -1,9 +1,7 @@
 <template>
   <li>
     <div>{{ title }}</div>
-    <button type="button" @click="handleClick(index)">
-      link: {{ likeCount }}
-    </button>
+    <button type="button" @click="handleClick">link: {{ likeCount }}</button>
   </li>
 </template>
 
@@ -15,19 +13,15 @@ export default {
       required: true
     },
 
-    handleClick: {
-      type: Function,
-      required: true
-    },
-
     likeCount: {
       type: Number,
       required: true
-    },
+    }
+  },
 
-    index: {
-      type: Number,
-      required: true
+  methods: {
+    handleClick() {
+      this.$emit("click");
     }
   }
 };

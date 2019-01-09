@@ -1,22 +1,12 @@
 <template>
-  <div class="home">
-    <PostListPresenter :items="items">
-      <PostList
-        slot-scope="{ items, handleClick }"
-        :items="items"
-        :handleClick="handleClick"
-      />
-    </PostListPresenter>
-  </div>
+  <div class="home"><PostList :items="items" /></div>
 </template>
 
 <script>
-import PostListPresenter from "@/components/PostListPresenter";
 import PostList from "@/components/PostList";
 
 export default {
   components: {
-    PostListPresenter,
     PostList
   },
 
