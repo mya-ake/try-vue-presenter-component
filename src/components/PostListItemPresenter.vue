@@ -46,7 +46,7 @@ export default {
     if (typeof slot !== "function") {
       return createRenderless(h, this.$slots.default);
     }
-    const nodes = slot({ ...this.item, handleClick: this.countUp });
+    const nodes = slot({ item: this.item, handleClick: this.countUp });
     return createRenderless(h, nodes);
   }
 };

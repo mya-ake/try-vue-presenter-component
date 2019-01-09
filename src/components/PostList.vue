@@ -2,9 +2,8 @@
   <ul>
     <PostListItemPresenter v-for="item in items" :key="item.id" v-bind="item">
       <PostListItem
-        slot-scope="{ title, likeCount, handleClick }"
-        :title="title"
-        :likeCount="likeCount"
+        slot-scope="{ item, handleClick }"
+        v-bind="item"
         @click="handleClick"
       />
     </PostListItemPresenter>
